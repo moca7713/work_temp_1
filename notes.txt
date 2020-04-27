@@ -1,0 +1,42 @@
+[Leafletで地図を表示する]
+タイルレイヤーを作成し、地図にセットする
+
+        //OpenStreetMapレイヤー追加
+		var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        	maxZoom: 18,
+        	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    	});
+
+        //地理院地図レイヤー追加
+        var tiles = L.tileLayer(
+	        'http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
+	        {
+		        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+	        });
+
+        //地理院地図(英語)レイヤー追加
+        var tiles = L.tileLayer(
+	        'http://cyberjapandata.gsi.go.jp/xyz/english/{z}/{x}/{y}.png',
+	        {
+		        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+	        });
+
+[影について]
+これはFirefoxでは効く。IEでは効かない。
+svg{
+  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+}
+
+feOffsetを使う方法
+これはIEでも効く。
+SVGではfilterは<defs>要素の中で定義する。
+filterには、そのfilterを指定するための、idが必要。
+  <svg width="80" height="80"> 
+     <defs>
+       <filter id="f3" x="0" y="0" width="200%" height="200%">
+         <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+         <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+         <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+       </filter>
+     </defs>
+     <circle cx="40" cy="40" r="30" stroke="#000" stroke-width="1" fill="#DDA755" filter="url(#f3)" />

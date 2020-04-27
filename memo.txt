@@ -1,0 +1,61 @@
+C:\xampp\htdocs\jQueryProject1\index.php
+
+BISに追加。
+C:\svn\next\trunk\search\src\template\common\search\Head.tpl
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./js/FileSaver.min.js"></script>
+<script src="./js/xlsx.mini.js"></script>
+<script src="./js/tableexport.min.js"></script>
+
+<script>
+#1 IDに適用
+$(function(){
+	$("#table").tableExport({
+		formats: ["xlsx",  "csv",  "txt"], //エクスポートする形式
+		bootstrap: true //Bootstrapを利用するかどうか
+	});
+});
+
+#2 クラスに適用
+$(function(){
+       $(".color_table").tableExport({
+       formats: ["xlsx",  "csv",  "txt"], //エクスポートする形式
+	bootstrap: true //Bootstrapを利用するかどうか
+       });
+});
+
+        <table class="headborder_none situation color_table">
+
+
+SC-S-0010-04150_チーム - 投手 - 状況別 - イニング
+C:\svn\next\trunk\search\src\template\tables\tableType83_9.tpl
+
+
+SC-S-0010-03190 チーム - 打撃 - その他 - 複数安打
+C:\svn\next\trunk\search\src\template\tables
+tableType12.tpl
+
+
+・csvで保存した結果をExcelで開くと文字化けする。
+  [対処]
+  Sakuraなどで開いてs-jisで保存しなおす。
+
+・bisではテーブルが3つに分かれているので各テーブルに適用するとボタン押下時、そのテーブルのデータしかエクスポートされない。これらのテーブルをすべて包含するdivなどに適用すればテーブル全体のデータが１つのファイルにエクスポートされる。
+
+e.g.)
+
+Head.tpl
+$(function(){
+       $(".header_lock_table").tableExport({
+       formats: ["xlsx",  "csv",  "txt"], //エクスポートする形式
+	bootstrap: true //Bootstrapを利用するかどうか
+       });
+});
+
+C:\svn\next\trunk\search\src\template\tables\tableType83_9.tpl
+<div class="header_lock_table">
+    <div id="lock_header">
+        <table class="headborder_none situation color_table">
+            <thead>
+                <tr>
+                    <th class="INNING3">イニング</th>
