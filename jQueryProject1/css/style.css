@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+body {
+  padding: 60px;
+  background-color : #DDA755;
+}
+
+/* Leaflet用 */
+#map_leaflet1 {
+  height: 600px;
+  width: 1200px;
+}
+#map_leaflet2 {
+  height: 600px;
+  width: 90%;
+}
+
+#container {
+  width: 95%;
+  margin : 10px ;
+}
+
+.container {
+  width: 80%;
+  margin : 10px ;
+}
+
+div.container1{
+  padding: 10px;
+  padding-left: 50px;
+  width: 95%;
+  height: 600px;
+  box-shadow: 5px 5px 8px rgba(0,0,0,0.6);
+  /* IEでは使えない。 FirefoxではLeafletの地図上でのクリックが効かなくなる */
+  /* filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));                     */
+  background-image : url(../img/wood3.gif);
+  background-repeat : repeat;
+}
+
+div.container2{
+  height: 1300px;
+}
+
+div.container3{
+  height: 200px;
+}
+
+div.container4{
+  padding-left: 50px;
+  height: 750px;
+}
+
+hr{
+  border-width: 3px;
+  box-shadow: 1px 10px 0px rgba(FF,FF,FF,FF);
+}
+
+#dot{
+  box-shadow: 5px 5px 8px rgba(0,0,0,0.6);
+}
